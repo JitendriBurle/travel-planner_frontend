@@ -188,7 +188,7 @@ const Dashboard = () => {
               placeholder="Search trips by name or destination..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="input-saas py-3.5 lg:py-4 pl-12 rounded-2xl lg:rounded-[2rem]"
+              className="input-saas py-3.5 lg:py-4 !pl-12 rounded-2xl lg:rounded-[2rem]"
             />
             <div className="absolute left-5 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors">
               <Search className="h-5 w-5" />
