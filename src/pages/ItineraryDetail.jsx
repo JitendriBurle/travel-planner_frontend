@@ -421,9 +421,9 @@ const ItineraryDetail = () => {
           <div className="absolute inset-0 gradient-primary" />
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-[#F8FAFC] via-black/20 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-black/20 to-black/40" />
 
-        <div className="relative h-full container mx-auto px-6 flex flex-col justify-end pb-12">
+        <div className="relative h-full container mx-auto px-6 flex flex-col justify-end pb-16">
           <button
             onClick={() => navigate("/dashboard")}
             className="absolute top-4 sm:top-8 left-4 sm:left-6 flex items-center gap-2 text-white/80 hover:text-white transition-colors font-medium bg-black/20 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl group text-sm sm:text-base border border-white/10"
@@ -468,7 +468,51 @@ const ItineraryDetail = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 -mt-6 sm:-mt-10 relative z-10 pb-20">
+      {/* HORIZONTAL WEATHER WIDGET */}
+      {!weatherLoading && weather && (
+        <div className="container mx-auto px-4 sm:px-6 relative z-20 mt-6 sm:mt-8 mb-8 animate-slide-up" style={{ animationDelay: '200ms' }}>
+          <div className="glass-card p-4 sm:p-6 rounded-3xl sm:rounded-[2.5rem] border border-white/40 shadow-travel flex flex-col md:flex-row items-center gap-6 md:gap-12 justify-between overflow-hidden">
+            <div className="absolute -left-10 -bottom-10 h-32 w-32 bg-primary/10 rounded-full blur-3xl" />
+            
+            {/* CURRENT WEATHER */}
+            <div className="flex items-center gap-6 sm:gap-8 shrink-0 relative z-10 w-full md:w-auto justify-between md:justify-start">
+              <div className="flex items-end gap-2">
+                <span className="text-5xl sm:text-6xl font-display font-extrabold text-foreground leading-none">{weather.temp}°</span>
+                <span className="text-sm font-bold text-muted-foreground mb-1.5 uppercase tracking-widest">{weather.condition}</span>
+              </div>
+              <div className="flex gap-4 sm:gap-6 border-l border-border/50 pl-6 sm:pl-8">
+                <div>
+                  <p className="text-[9px] sm:text-[10px] font-bold text-muted-foreground uppercase mb-1">Humidity</p>
+                  <p className="font-bold text-foreground text-xs sm:text-sm">{weather.humidity}%</p>
+                </div>
+                <div>
+                  <p className="text-[9px] sm:text-[10px] font-bold text-muted-foreground uppercase mb-1">Wind</p>
+                  <p className="font-bold text-foreground text-xs sm:text-sm">{weather.windSpeed} km/h</p>
+                </div>
+              </div>
+            </div>
+
+            {/* UPCOMING FORECAST */}
+            {forecast && forecast.length > 1 && (
+              <div className="flex gap-2 sm:gap-3 overflow-x-auto scrollbar-hide w-full md:w-auto md:max-w-2xl md:justify-end shrink-0 relative z-10 hidden sm:flex">
+                {forecast.slice(1, 6).map((f, i) => (
+                  <div key={i} className="flex-shrink-0 flex items-center gap-3 p-2.5 sm:p-3 bg-white/40 rounded-2xl border border-white/60 shadow-sm min-w-[120px] hover:-translate-y-1 transition-transform cursor-default">
+                    <span className="text-2xl sm:text-3xl drop-shadow-sm">{f.iconEmoji || "☀️"}</span>
+                    <div>
+                      <p className="text-[9px] sm:text-[10px] font-black text-foreground uppercase tracking-wider">
+                        {new Date(f.date).toLocaleDateString('en-US', { weekday: 'short' })}
+                      </p>
+                      <span className="font-bold text-foreground bg-white/50 px-2 py-0.5 rounded-md text-xs mt-0.5 inline-block">{f.temp}°</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 pb-20">
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8">
           
           <div className="lg:col-span-3">
@@ -553,65 +597,6 @@ const ItineraryDetail = () => {
                   </div>
                 </div>
               </div>
-              
-              {/* WEATHER WIDGET */}
-              <div className="glass-card p-6 rounded-[2rem] border border-white/40 overflow-hidden relative group">
-                <div className="absolute -top-4 -right-4 h-24 w-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all" />
-                <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground mb-4 flex items-center gap-2">
-                  <CloudSun size={14} className="text-primary" /> Weather Forecast
-                </h3>
-                
-                {weatherLoading ? (
-                  <div className="animate-pulse space-y-3">
-                    <div className="h-8 bg-muted rounded-xl w-1/2" />
-                    <div className="h-4 bg-muted rounded-xl w-3/4" />
-                  </div>
-                ) : weather ? (
-                  <div className="space-y-6">
-                    <div>
-                      <div className="flex items-end gap-2 mb-4">
-                        <span className="text-4xl font-display font-extrabold text-foreground">{weather.temp}°</span>
-                        <span className="text-sm font-bold text-muted-foreground mb-1">CELSIUS</span>
-                      </div>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div className="bg-white/40 p-3 rounded-2xl border border-white/60">
-                          <p className="text-[10px] font-bold text-muted-foreground uppercase mb-1">Humidity</p>
-                          <p className="font-bold text-foreground">{weather.humidity}%</p>
-                        </div>
-                        <div className="bg-white/40 p-3 rounded-2xl border border-white/60">
-                          <p className="text-[10px] font-bold text-muted-foreground uppercase mb-1">Wind</p>
-                          <p className="font-bold text-foreground">{weather.windSpeed} km/h</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* 5-DAY FORECAST (Skipping today to avoid redundancy) */}
-                    {forecast && forecast.length > 1 && (
-                      <div className="pt-6 border-t border-border/50">
-                        <h4 className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-4">Upcoming Forecast</h4>
-                        <div className="space-y-2">
-                          {forecast.slice(1, 5).map((f, i) => (
-                            <div key={i} className="flex items-center justify-between p-2.5 bg-white/30 rounded-xl border border-white/40 hover:bg-white/50 transition-colors">
-                              <div className="flex items-center gap-3">
-                                <span className="text-lg">{f.iconEmoji || "☀️"}</span>
-                                <div>
-                                  <p className="text-[10px] font-bold text-foreground uppercase">
-                                    {new Date(f.date).toLocaleDateString('en-US', { weekday: 'short' })}
-                                  </p>
-                                  <p className="text-[9px] text-muted-foreground font-medium uppercase tracking-tighter">{f.condition}</p>
-                                </div>
-                              </div>
-                              <span className="font-bold text-foreground text-sm">{f.temp}°</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <p className="text-sm text-muted-foreground">Weather info unavailable</p>
-                )}
-              </div>
             </div>
           </div>
 
@@ -653,9 +638,6 @@ const ItineraryDetail = () => {
                 <div className="relative pl-8 border-l-2 border-dashed border-primary/20 space-y-6">
                   {dayActivities.length === 0 ? (
                     <div className="bg-white/40 border-2 border-dashed border-border rounded-[2.5rem] py-16 text-center">
-                      <div className="h-16 w-16 bg-white rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-sm">
-                        <Camera className="h-8 w-8 text-primary/40" />
-                      </div>
                       <p className="text-muted-foreground font-bold italic">No activities planned yet. What's the plan for today?</p>
                     </div>
                   ) : (

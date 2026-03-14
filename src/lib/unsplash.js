@@ -51,7 +51,9 @@ const getFallbackImage = (query) => {
   for (const [key, url] of Object.entries(fallbackImages)) {
     if (lower.includes(key)) return url;
   }
-  return fallbackImages.default;
+  // If the exact city isn't hardcoded and the user hasn't provided an Unsplash API key,
+  // return a dynamic image matching their local/national destination using LoremFlickr!
+  return `https://loremflickr.com/1280/720/${encodeURIComponent(query)}`;
 };
 
 export const getDestinationImage = async (query, size = 'regular') => {
@@ -93,7 +95,9 @@ export const getMultipleImages = async (query, count = 6) => {
   if (!query) return [fallbackImages.default];
 
   if (!UNSPLASH_ACCESS_KEY || UNSPLASH_ACCESS_KEY === 'YOUR_UNSPLASH_ACCESS_KEY') {
-    return [getFallbackImage(query)];
+    return Array.from({ length: count }).map(
+      (_, i) => `https://loremflickr.com/1280/720/${encodeURIComponent(query)}?lock=${i + 1}`
+    );
   }
 
   try {
@@ -106,6 +110,8 @@ export const getMultipleImages = async (query, count = 6) => {
     return data.results.map(r => r.urls.regular);
   } catch (err) {
     console.warn('Unsplash API error:', err);
-    return [getFallbackImage(query)];
+    return Array.from({ length: count }).map(
+      (_, i) => `https://loremflickr.com/1280/720/${encodeURIComponent(query)}?lock=${i + 1}_fallback`
+    );
   }
 };

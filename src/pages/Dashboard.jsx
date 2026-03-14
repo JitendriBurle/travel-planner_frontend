@@ -16,6 +16,8 @@ const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all"); // all, upcoming, past
+  const [previewImage, setPreviewImage] = useState(null);
+  const [isFetchingPreview, setIsFetchingPreview] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -43,6 +45,28 @@ const Dashboard = () => {
   useEffect(() => {
     if (user) loadTrips();
   }, [user]);
+
+  // FETCH PREVIEW IMAGE FOR MODAL
+  useEffect(() => {
+    if (!form.destination || form.destination.length < 3) {
+      setPreviewImage(null);
+      return;
+    }
+
+    const timer = setTimeout(async () => {
+      setIsFetchingPreview(true);
+      try {
+        const img = await getDestinationImage(form.destination);
+        setPreviewImage(img);
+      } catch (err) {
+        setPreviewImage(null);
+      } finally {
+        setIsFetchingPreview(false);
+      }
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, [form.destination]);
 
   // LOAD UNSPLASH IMAGES
   useEffect(() => {
@@ -88,6 +112,7 @@ const Dashboard = () => {
         notes: "",
       });
 
+      setPreviewImage(null);
       setShowModal(false);
     } catch (err) {
       toast.error("Failed to create trip");
@@ -319,8 +344,25 @@ const Dashboard = () => {
           >
             <div className="text-center mb-10">
               <h1 className="text-3xl font-display font-extrabold text-foreground">Welcome Back</h1>
-            <p className="text-muted-foreground font-medium">Plan your next trip or manage your existing ones.</p>
+              <p className="text-muted-foreground font-medium">Plan your next trip or manage your existing ones.</p>
             </div>
+
+            {form.destination && form.destination.length >= 3 && (
+              <div className="mb-8 relative h-48 w-full rounded-[2.5rem] overflow-hidden bg-muted/30 border border-white/40 shadow-inner animate-fade-in group">
+                {previewImage && !isFetchingPreview ? (
+                  <img src={previewImage} alt="Destination Preview" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="h-6 w-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-6 left-8 flex items-center gap-2 text-white">
+                  <MapPin className="h-5 w-5 text-primary" />
+                  <span className="text-xl font-display font-bold tracking-wide">{form.destination}</span>
+                </div>
+              </div>
+            )}
 
             <form onSubmit={addTrip} className="space-y-6">
               <div className="space-y-6">
@@ -386,7 +428,10 @@ const Dashboard = () => {
               <div className="flex gap-4 pt-10">
                 <button
                   type="button"
-                  onClick={() => setShowModal(false)}
+                  onClick={() => {
+                    setShowModal(false);
+                    setPreviewImage(null);
+                  }}
                   className="btn-saas-secondary flex-1 py-4 rounded-3xl"
                 >
                   Discard
