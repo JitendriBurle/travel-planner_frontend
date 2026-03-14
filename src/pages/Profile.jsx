@@ -37,7 +37,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto px-6 py-12 max-w-2xl">
         <button 
           onClick={() => navigate('/dashboard')} 

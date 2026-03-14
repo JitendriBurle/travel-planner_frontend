@@ -12,7 +12,7 @@ const features = [
 
 const Landing = () => {
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-background">
       {/* HERO SECTION */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -95,7 +95,7 @@ const Landing = () => {
         </div>
       </section>
 
-      <footer className="py-20 bg-white border-t border-border/40">
+      <footer className="py-20 bg-background border-t border-border/40">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-2">
             <Plane className="h-8 w-8 text-primary" />

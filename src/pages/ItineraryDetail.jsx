@@ -402,7 +402,7 @@ const ItineraryDetail = () => {
 
 
   return (
-    <div ref={itineraryRef} className="min-h-screen bg-[#F8FAFC]">
+    <div ref={itineraryRef} className="min-h-screen bg-background">
       {/* HERO HEADER */}
       <div className="relative h-[300px] sm:h-[420px] overflow-hidden">
         {heroImage ? (

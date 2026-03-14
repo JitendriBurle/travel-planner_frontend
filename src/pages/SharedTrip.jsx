@@ -42,7 +42,7 @@ const SharedTrip = () => {
   );
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-background">
       <div className="h-[50vh] relative overflow-hidden">
         <div className="absolute inset-0">
           <img 
