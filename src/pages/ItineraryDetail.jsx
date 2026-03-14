@@ -171,6 +171,12 @@ const ItineraryDetail = () => {
   /* DATE CALCULATIONS */
   const start = new Date(trip.start_date);
   const end = new Date(trip.end_date);
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+  const statusEnd = new Date(end);
+  statusEnd.setHours(23, 59, 59, 999);
+  
+  const tripStatus = start > now ? "Upcoming Trip" : statusEnd < now ? "Completed Trip" : "Active Trip";
   const days = Math.max(1, Math.ceil((end - start) / (1000 * 60 * 60 * 24))) + 1;
   const dayList = Array.from({ length: days }, (_, i) => {
     const d = new Date(start);
@@ -430,7 +436,7 @@ const ItineraryDetail = () => {
           <div className="max-w-3xl animate-slide-up">
             <div className="flex items-center gap-3 mb-3 sm:mb-4">
               <span className="bg-primary/20 backdrop-blur-md border border-white/20 text-white px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest shadow-xl">
-                Upcoming Trip
+                {tripStatus}
               </span>
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl">
