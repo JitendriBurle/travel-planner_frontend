@@ -171,12 +171,12 @@ const categories = [
              />
            </div>
            
-           <div className="flex justify-between mt-4">
-              <p className="text-xs font-bold text-muted-foreground">0.00</p>
-              <p className={`text-xs font-bold ${percent > 90 ? 'text-destructive font-black' : 'text-primary'}`}>
-                {percent > 90 ? '接近预算上限' : '系统正常'}
+            <div className="flex justify-between mt-4">
+              <p className="text-[10px] sm:text-xs font-bold text-muted-foreground uppercase tracking-widest">Spent: $0.00</p>
+              <p className={`text-[10px] sm:text-xs font-black uppercase tracking-widest ${percent > 90 ? 'text-destructive animate-pulse' : 'text-primary'}`}>
+                {percent > 90 ? 'Warning: Near Limit' : 'Budget Status: Healthy'}
               </p>
-              <p className="text-xs font-bold text-muted-foreground">{budget.toLocaleString()}</p>
+              <p className="text-[10px] sm:text-xs font-bold text-muted-foreground uppercase tracking-widest">Limit: {budget.toLocaleString()}</p>
            </div>
         </div>
       )}
@@ -235,8 +235,8 @@ const categories = [
                 </div>
               </div>
 
-              <div className="flex items-center justify-between sm:justify-end gap-6 border-t sm:border-t-0 pt-3 sm:pt-0 border-border/50">
-                <span className="font-display font-bold text-base sm:text-lg text-foreground">
+              <div className="flex items-center justify-between sm:justify-end gap-4 sm:gap-8 border-t sm:border-t-0 pt-3 sm:pt-0 border-border/50">
+                <span className="font-display font-black text-lg sm:text-xl text-foreground">
                   ${Number(exp.amount).toFixed(2)}
                 </span>
 

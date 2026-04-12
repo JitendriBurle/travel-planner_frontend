@@ -423,14 +423,14 @@ const ItineraryDetail = () => {
 
         <div className="absolute inset-0 bg-gradient-to-t from-background via-black/20 to-black/40" />
 
-        <div className="relative h-full container mx-auto px-6 flex flex-col justify-end pb-16">
+        <div className="relative h-full container mx-auto px-4 sm:px-6 flex flex-col justify-end pb-8 sm:pb-16">
           <button
             onClick={() => navigate("/dashboard")}
-            className="absolute top-4 sm:top-8 left-4 sm:left-6 flex items-center gap-2 text-white/80 hover:text-white transition-colors font-medium bg-black/20 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl group text-sm sm:text-base border border-white/10"
+            className="absolute top-4 sm:top-8 left-4 sm:left-6 flex items-center gap-2 text-white/80 hover:text-white transition-colors font-medium bg-black/40 backdrop-blur-md px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl group text-xs sm:text-base border border-white/10 z-50 shadow-2xl"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span className="hidden sm:inline">Back to Dashboard</span>
-            <span className="sm:hidden">Back</span>
+            <span className="sm:hidden font-bold tracking-tight">Dashboard</span>
           </button>
 
           <div className="max-w-3xl animate-slide-up">
@@ -439,7 +439,7 @@ const ItineraryDetail = () => {
                 {tripStatus}
               </span>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-white mb-3 sm:mb-6 leading-tight drop-shadow-2xl tracking-tight">
               {trip.name}
             </h1>
 
@@ -470,39 +470,42 @@ const ItineraryDetail = () => {
 
       {/* HORIZONTAL WEATHER WIDGET */}
       {!weatherLoading && weather && (
-        <div className="container mx-auto px-4 sm:px-6 relative z-20 mt-6 sm:mt-8 mb-8 animate-slide-up" style={{ animationDelay: '200ms' }}>
-          <div className="glass-card p-4 sm:p-6 rounded-3xl sm:rounded-[2.5rem] border border-white/40 shadow-travel flex flex-col md:flex-row items-center gap-6 md:gap-12 justify-between overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 relative z-20 -mt-6 sm:-mt-10 mb-8 animate-slide-up" style={{ animationDelay: '200ms' }}>
+          <div className="glass-card p-5 sm:p-7 rounded-[2rem] sm:rounded-[2.5rem] border border-white/40 shadow-travel flex flex-col md:flex-row items-center gap-6 md:gap-12 justify-between overflow-hidden relative">
             <div className="absolute -left-10 -bottom-10 h-32 w-32 bg-primary/10 rounded-full blur-3xl" />
             
             {/* CURRENT WEATHER */}
-            <div className="flex items-center gap-6 sm:gap-8 shrink-0 relative z-10 w-full md:w-auto justify-between md:justify-start">
-              <div className="flex items-end gap-2">
-                <span className="text-5xl sm:text-6xl font-display font-extrabold text-foreground leading-none">{weather.temp}°</span>
-                <span className="text-sm font-bold text-muted-foreground mb-1.5 uppercase tracking-widest">{weather.condition}</span>
+            <div className="flex items-center gap-6 sm:gap-10 shrink-0 relative z-10 w-full md:w-auto justify-between md:justify-start">
+              <div className="flex items-center gap-4">
+                <span className="text-5xl sm:text-6xl font-display font-black text-foreground leading-none">{weather.temp}°</span>
+                <div className="flex flex-col">
+                  <span className="text-xs font-black text-primary uppercase tracking-widest">{weather.condition}</span>
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase opacity-50">Current</span>
+                </div>
               </div>
-              <div className="flex gap-4 sm:gap-6 border-l border-border/50 pl-6 sm:pl-8">
+              <div className="flex gap-4 sm:gap-8 border-l border-border/50 pl-6 sm:pl-10">
                 <div>
-                  <p className="text-[9px] sm:text-[10px] font-bold text-muted-foreground uppercase mb-1">Humidity</p>
-                  <p className="font-bold text-foreground text-xs sm:text-sm">{weather.humidity}%</p>
+                  <p className="text-[9px] sm:text-[10px] font-black text-muted-foreground uppercase mb-1 tracking-tighter">Humidity</p>
+                  <p className="font-bold text-foreground text-sm sm:text-base">{weather.humidity}%</p>
                 </div>
                 <div>
-                  <p className="text-[9px] sm:text-[10px] font-bold text-muted-foreground uppercase mb-1">Wind</p>
-                  <p className="font-bold text-foreground text-xs sm:text-sm">{weather.windSpeed} km/h</p>
+                  <p className="text-[9px] sm:text-[10px] font-black text-muted-foreground uppercase mb-1 tracking-tighter">Wind</p>
+                  <p className="font-bold text-foreground text-sm sm:text-base">{weather.windSpeed} km/h</p>
                 </div>
               </div>
             </div>
 
             {/* UPCOMING FORECAST */}
             {forecast && forecast.length > 1 && (
-              <div className="flex gap-2 sm:gap-3 overflow-x-auto scrollbar-hide w-full md:w-auto md:max-w-2xl md:justify-end shrink-0 relative z-10 hidden sm:flex">
+              <div className="flex gap-2.5 sm:gap-4 overflow-x-auto scrollbar-hide w-full md:w-auto md:max-w-3xl md:justify-end shrink-0 relative z-10 py-2 -mx-2 px-2 md:mx-0 md:px-0">
                 {forecast.slice(1, 6).map((f, i) => (
-                  <div key={i} className="flex-shrink-0 flex items-center gap-3 p-2.5 sm:p-3 bg-white/40 rounded-2xl border border-white/60 shadow-sm min-w-[120px] hover:-translate-y-1 transition-transform cursor-default">
+                  <div key={i} className="flex-shrink-0 flex items-center gap-3 p-3 sm:p-3.5 bg-white/40 rounded-2xl border border-white/60 shadow-sm min-w-[110px] sm:min-w-[130px] hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
                     <span className="text-2xl sm:text-3xl drop-shadow-sm">{f.iconEmoji || "☀️"}</span>
                     <div>
                       <p className="text-[9px] sm:text-[10px] font-black text-foreground uppercase tracking-wider">
                         {new Date(f.date).toLocaleDateString('en-US', { weekday: 'short' })}
                       </p>
-                      <span className="font-bold text-foreground bg-white/50 px-2 py-0.5 rounded-md text-xs mt-0.5 inline-block">{f.temp}°</span>
+                      <span className="font-bold text-primary bg-primary/5 px-2 py-0.5 rounded-md text-[10px] sm:text-xs mt-1 inline-block">{f.temp}°</span>
                     </div>
                   </div>
                 ))}
@@ -518,70 +521,70 @@ const ItineraryDetail = () => {
           <div className="lg:col-span-3">
             <div className="lg:sticky lg:top-8 space-y-6">
               {/* NAVIGATION & BUTTONS */}
-              <div className="glass-card p-2 sm:p-4 rounded-2xl sm:rounded-[2rem] border border-white/40 shadow-travel">
-                <div className="grid grid-cols-4 lg:grid-cols-1 gap-1 sm:gap-1.5 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 scrollbar-hide">
+              <div className="glass-card p-2 sm:p-4 rounded-3xl sm:rounded-[2rem] border border-white/40 shadow-travel sticky top-4 lg:relative lg:top-0 z-[40]">
+                <div className="flex lg:flex-col gap-1.5 sm:gap-2 overflow-x-auto lg:overflow-visible pb-1 sm:pb-2 lg:pb-0 scrollbar-hide">
                   {[
-                    { id: "itinerary", icon: Clock, label: "Itinerary" },
-                    { id: "map", icon: MapPin, label: "Map" },
-                    { id: "expenses", icon: FileText, label: "Expenses" },
+                    { id: "itinerary", icon: Clock, label: "Daily Plan" },
+                    { id: "map", icon: MapPin, label: "Map View" },
+                    { id: "expenses", icon: FileText, label: "Budget" },
                     { id: "packing", icon: Package, label: "Packing" },
-                    { id: "docs", icon: FileText, label: "Documents" },
+                    { id: "docs", icon: FileText, label: "Docs" },
                     { id: "reminders", icon: Bell, label: "Alerts" },
                     { id: "reviews", icon: MessageSquare, label: "Reviews" },
                   ].map((item) => (
-                    <button
-                      key={item.id}
-                      onClick={() => setTab(item.id)}
-                      className={`flex flex-col lg:flex-row items-center gap-1 sm:gap-3 px-3 sm:px-5 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-300 group ${
-                        tab === item.id 
-                          ? "gradient-primary text-white shadow-lg shadow-primary/20 scale-[1.02]" 
-                          : "text-muted-foreground hover:bg-white/60 hover:text-foreground"
-                      }`}
-                    >
-                      <item.icon className="h-4 w-4 sm:h-5 sm:w-5 opacity-80" />
-                      <span className="font-bold text-[9px] sm:text-[10px] lg:text-sm whitespace-nowrap">{item.label}</span>
-                    </button>
+                      <button
+                        key={item.id}
+                        onClick={() => setTab(item.id)}
+                        className={`flex flex-col lg:flex-row items-center gap-1.5 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl transition-all duration-300 group shrink-0 ${
+                          tab === item.id 
+                            ? "gradient-primary text-white shadow-lg shadow-primary/20 scale-[1.02]" 
+                            : "text-muted-foreground hover:bg-white/80 hover:text-foreground"
+                        }`}
+                      >
+                        <item.icon className={`h-4 w-4 sm:h-5 sm:w-5 ${tab === item.id ? "opacity-100" : "opacity-60"}`} />
+                        <span className="font-bold text-[10px] sm:text-xs lg:text-sm whitespace-nowrap">{item.label}</span>
+                      </button>
                   ))}
                 </div>
 
-                <div className="mt-6 pt-6 border-t border-border/50 px-2">
+                <div className="hidden lg:block mt-6 pt-6 border-t border-border/50 px-2">
                   <div className="flex flex-col gap-3 animate-fade-in" style={{ animationDelay: "200ms" }}>
                     <div className="relative">
                       <button 
                         onClick={() => setShowShareMenu(!showShareMenu)}
-                        className={`w-full btn-saas-secondary py-3 px-4 rounded-xl flex items-center justify-between gap-2 transition-all duration-300 ${
+                        className={`w-full btn-saas-secondary py-3.5 px-5 rounded-2xl flex items-center justify-between gap-2 transition-all duration-300 ${
                           showShareMenu ? "bg-primary/10 border-primary text-primary shadow-lg" : ""
                         }`}
                       >
                         <div className="flex items-center gap-2">
-                          <Share2 size={16} />
-                          <span className="font-bold text-xs sm:text-sm">Trip Share</span>
+                          <Share2 size={18} />
+                          <span className="font-bold text-sm">Trip Share</span>
                         </div>
-                        {showShareMenu ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                        {showShareMenu ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                       </button>
 
                       {showShareMenu && (
-                        <div className="absolute top-full left-0 mt-3 w-48 sm:w-56 bg-card glass-card rounded-xl p-1.5 border border-white/60 shadow-2xl z-[100] animate-scale-in origin-top-left">
+                        <div className="absolute top-full left-0 mt-3 w-56 bg-card glass-card rounded-2xl p-2 border border-white/60 shadow-2xl z-[100] animate-scale-in origin-top-left">
                           <button 
                             onClick={() => { shareVia("whatsapp"); setShowShareMenu(false); }}
-                            className="w-full p-3 text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all flex items-center gap-3 group/share"
+                            className="w-full p-3.5 text-foreground hover:bg-primary/10 hover:text-primary rounded-xl transition-all flex items-center gap-3 group/share"
                           >
-                            <MessageCircle size={16} className="text-primary/70 group-hover/share:text-primary" />
-                            <span className="text-xs sm:text-sm font-bold">WhatsApp</span>
+                            <MessageCircle size={18} className="text-primary/70 group-hover/share:text-primary" />
+                            <span className="text-sm font-bold">WhatsApp</span>
                           </button>
                           <button 
                             onClick={() => { shareVia("email"); setShowShareMenu(false); }}
-                            className="w-full p-3 text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all flex items-center gap-3 group/share"
+                            className="w-full p-3.5 text-foreground hover:bg-primary/10 hover:text-primary rounded-xl transition-all flex items-center gap-3 group/share"
                           >
-                            <Mail size={16} className="text-primary/70 group-hover/share:text-primary" />
-                            <span className="text-xs sm:text-sm font-bold">Email</span>
+                            <Mail size={18} className="text-primary/70 group-hover/share:text-primary" />
+                            <span className="text-sm font-bold">Email</span>
                           </button>
                           <button 
                             onClick={() => { shareVia("copy"); setShowShareMenu(false); }}
-                            className="w-full p-3 text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-all flex items-center gap-3 group/share border-t border-border/50 mt-1"
+                            className="w-full p-3.5 text-foreground hover:bg-primary/10 hover:text-primary rounded-xl transition-all flex items-center gap-3 group/share border-t border-border/50 mt-1"
                           >
-                            <Copy size={16} className="text-primary/70 group-hover/share:text-primary" />
-                            <span className="text-xs sm:text-sm font-bold">Copy Link</span>
+                            <Copy size={18} className="text-primary/70 group-hover/share:text-primary" />
+                            <span className="text-sm font-bold">Copy Link</span>
                           </button>
                         </div>
                       )}
@@ -589,13 +592,54 @@ const ItineraryDetail = () => {
 
                     <button
                       onClick={downloadOffline}
-                      className="w-full btn-saas-primary py-3 px-4 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm"
+                      className="w-full btn-saas-primary py-4 px-6 rounded-2xl flex items-center justify-center gap-2 text-sm shadow-xl"
                     >
-                      <Download size={16} />
-                      <span>Download PDF</span>
+                      <Download size={18} />
+                      <span className="font-bold">Download PDF</span>
                     </button>
                   </div>
                 </div>
+              </div>
+
+              {/* MOBILE SHARE & DOWNLOAD */}
+              <div className="lg:hidden flex gap-3 mt-4">
+                <button
+                  onClick={() => setShowShareMenu(!showShareMenu)}
+                  className="flex-1 btn-saas-secondary py-3.5 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold shadow-sm relative"
+                >
+                  <Share2 size={16} /> Share
+                  {showShareMenu && (
+                        <div className="absolute bottom-full left-0 mb-3 w-56 bg-card glass-card rounded-2xl p-2 border border-white/60 shadow-2xl z-[100] animate-scale-in origin-bottom-left">
+                          <button 
+                            onClick={() => { shareVia("whatsapp"); setShowShareMenu(false); }}
+                            className="w-full p-3 text-left text-foreground hover:bg-primary/10 hover:text-primary rounded-xl transition-all flex items-center gap-3 group/share"
+                          >
+                            <MessageCircle size={16} className="text-primary/70 group-hover/share:text-primary" />
+                            <span className="text-xs font-bold">WhatsApp</span>
+                          </button>
+                          <button 
+                            onClick={() => { shareVia("email"); setShowShareMenu(false); }}
+                            className="w-full p-3 text-left text-foreground hover:bg-primary/10 hover:text-primary rounded-xl transition-all flex items-center gap-3 group/share"
+                          >
+                            <Mail size={16} className="text-primary/70 group-hover/share:text-primary" />
+                            <span className="text-xs font-bold">Email</span>
+                          </button>
+                          <button 
+                            onClick={() => { shareVia("copy"); setShowShareMenu(false); }}
+                            className="w-full p-3 text-left text-foreground hover:bg-primary/10 hover:text-primary rounded-xl transition-all flex items-center gap-3 group/share border-t border-border/50 mt-1"
+                          >
+                            <Copy size={16} className="text-primary/70 group-hover/share:text-primary" />
+                            <span className="text-xs font-bold">Copy Link</span>
+                          </button>
+                        </div>
+                      )}
+                </button>
+                <button
+                  onClick={downloadOffline}
+                  className="flex-1 btn-saas-primary py-3.5 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold shadow-lg"
+                >
+                  <Download size={16} /> PDF
+                </button>
               </div>
             </div>
           </div>
@@ -605,19 +649,19 @@ const ItineraryDetail = () => {
             {tab === "itinerary" && (
               <div className="animate-fade-in space-y-8">
                 {/* DAY SELECTOR */}
-                <div className="bg-white/50 backdrop-blur-xl p-2 rounded-[2.5rem] border border-white/40 shadow-sm flex gap-2 overflow-x-auto scrollbar-hide">
+                <div className="bg-white/50 backdrop-blur-xl p-1.5 sm:p-2 rounded-[2rem] sm:rounded-[2.5rem] border border-white/40 shadow-sm flex gap-1.5 sm:gap-2 overflow-x-auto scrollbar-hide">
                   {dayList.map((d, i) => (
                     <button
                       key={i}
                       onClick={() => setSelectedDay(i)}
-                      className={`flex-shrink-0 min-w-[100px] px-6 py-4 rounded-[2rem] transition-all duration-300 ${
+                      className={`flex-shrink-0 min-w-[70px] sm:min-w-[100px] px-4 sm:px-6 py-3 sm:py-4 rounded-[1.5rem] sm:rounded-[2rem] transition-all duration-300 ${
                         selectedDay === i 
                           ? "bg-white shadow-xl text-primary border border-primary/10" 
-                          : "text-muted-foreground hover:text-foreground"
+                          : "text-muted-foreground hover:text-foreground hover:bg-white/30"
                       }`}
                     >
-                      <p className="text-[10px] font-black uppercase tracking-widest opacity-40">Day</p>
-                      <p className="text-xl font-display font-extrabold">{i + 1}</p>
+                      <p className="text-[8px] sm:text-[10px] font-black uppercase tracking-widest opacity-40">Day</p>
+                      <p className="text-lg sm:text-xl font-display font-extrabold">{i + 1}</p>
                     </button>
                   ))}
                 </div>
@@ -635,68 +679,74 @@ const ItineraryDetail = () => {
                 </div>
 
                 {/* ACTIVITIES LIST */}
-                <div className="relative pl-8 border-l-2 border-dashed border-primary/20 space-y-6">
+                <div className="relative pl-6 sm:pl-10 border-l-2 border-dashed border-primary/20 space-y-6 sm:space-y-10">
                   {dayActivities.length === 0 ? (
-                    <div className="bg-white/40 border-2 border-dashed border-border rounded-[2.5rem] py-16 text-center">
-                      <p className="text-muted-foreground font-bold italic">No activities planned yet. What's the plan for today?</p>
+                    <div className="bg-white/40 border-2 border-dashed border-border rounded-[2.5rem] py-16 sm:py-24 text-center px-6">
+                      <p className="text-muted-foreground font-bold italic max-w-xs mx-auto">No activities planned yet. What's the adventure for today?</p>
                     </div>
                   ) : (
                     dayActivities.map((a, idx) => {
                       const Icon = activityIcons[a.type] || Camera;
                       return (
                         <div key={a.id} className="relative animate-slide-up" style={{ animationDelay: `${idx * 100}ms` }}>
-                          <div className="absolute -left-[41px] top-6 h-4 w-4 rounded-full bg-primary border-4 border-white shadow-lg z-10" />
-                          <div className="glass-card p-4 sm:p-6 rounded-2xl sm:rounded-3xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0 group hover:shadow-2xl hover:bg-white transition-all duration-500">
-                            <div className="flex gap-4 sm:gap-6 items-center">
-                              <div className="h-10 w-10 sm:h-14 sm:w-14 gradient-primary rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-lg shadow-primary/20 rotate-3 group-hover:rotate-0 transition-transform flex-shrink-0">
-                                <Icon size={20} className="sm:size-[24px]" />
+                          <div className="absolute -left-[33px] sm:-left-[49px] top-6 h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-primary border-4 border-white shadow-lg z-10" />
+                          <div className="glass-card p-4 sm:p-7 rounded-[1.5rem] sm:rounded-[2.5rem] flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6 group hover:shadow-2xl hover:bg-white transition-all duration-500 border border-white/60">
+                            <div className="flex gap-4 sm:gap-8 items-center flex-1">
+                              <div className="h-12 w-12 sm:h-16 sm:w-16 gradient-primary rounded-2xl sm:rounded-3xl flex items-center justify-center text-white shadow-lg shadow-primary/20 rotate-3 group-hover:rotate-0 transition-transform flex-shrink-0">
+                                <Icon size={20} className="sm:size-[28px]" />
                               </div>
-                              <div className="min-w-0">
-                                <div className="flex items-center gap-3 mb-1">
-                                  <span className="text-[9px] sm:text-xs font-black uppercase tracking-widest text-primary/60 bg-primary/5 px-2 py-0.5 rounded">
+                              <div className="min-w-0 flex-1">
+                                <div className="flex items-center gap-2 mb-1.5">
+                                  <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-primary bg-primary/5 px-2 py-1 rounded leading-none">
                                     {a.time || "OPEN TIME"}
                                   </span>
                                 </div>
-                                <h4 className="text-lg sm:text-2xl font-display font-bold text-foreground truncate">{a.title}</h4>
+                                <h4 className="text-lg sm:text-3xl font-display font-black text-foreground truncate tracking-tight">{a.title}</h4>
                                 {a.location && (
-                                  <p className="text-xs sm:text-sm text-muted-foreground font-medium flex items-center gap-1.5 mt-1">
-                                    <MapPin size={12} className="sm:size-[14px] text-primary" /> {a.location}
+                                  <p className="text-xs sm:text-base text-muted-foreground font-medium flex items-center gap-1.5 mt-1.5 opacity-80">
+                                    <MapPin size={12} className="sm:size-[18px] text-primary" /> {a.location}
                                   </p>
                                 )}
                               </div>
                             </div>
 
-                            <div className="flex gap-1 items-center justify-end sm:justify-start border-t sm:border-t-0 pt-3 sm:pt-0 border-border/50 sm:opacity-0 sm:group-hover:opacity-100 transition-all">
-                              <div className="flex items-center gap-1 mr-2 sm:border-r sm:pr-2 border-border/50">
+                            <div className="flex items-center justify-between sm:justify-end gap-2 border-t sm:border-t-0 pt-3 sm:pt-0 border-border/40 sm:opacity-0 sm:group-hover:opacity-100 transition-all">
+                              <div className="flex items-center gap-1 sm:gap-1.5 mr-auto sm:mr-3 sm:border-r sm:pr-3 border-border/30">
                                 <button 
                                   onClick={() => moveActivity(idx, 'up')}
                                   disabled={idx === 0}
-                                  className="p-1 sm:p-1.5 text-muted-foreground hover:text-primary disabled:opacity-30"
+                                  className="p-2 text-muted-foreground hover:text-primary disabled:opacity-20 transition-all bg-muted/30 sm:bg-transparent rounded-lg"
+                                  title="Move Up"
                                 >
-                                  <ChevronUp size={16} />
+                                  <ChevronUp size={18} />
                                 </button>
                                 <button 
                                   onClick={() => moveActivity(idx, 'down')}
                                   disabled={idx === dayActivities.length - 1}
-                                  className="p-1 sm:p-1.5 text-muted-foreground hover:text-primary disabled:opacity-30"
+                                  className="p-2 text-muted-foreground hover:text-primary disabled:opacity-20 transition-all bg-muted/30 sm:bg-transparent rounded-lg"
+                                  title="Move Down"
                                 >
-                                  <ChevronDown size={16} />
+                                  <ChevronDown size={18} />
                                 </button>
                               </div>
 
-                              <button
-                                onClick={() => startEdit(a)}
-                                className="p-2 sm:p-3 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-xl sm:rounded-2xl transition-all"
-                              >
-                                <Edit2 size={16} className="sm:size-[20px]" />
-                              </button>
+                              <div className="flex items-center gap-1.5">
+                                <button
+                                  onClick={() => startEdit(a)}
+                                  className="p-2.5 sm:p-4 text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-2xl transition-all"
+                                  title="Edit"
+                                >
+                                  <Edit2 size={18} className="sm:size-[22px]" />
+                                </button>
 
-                              <button
-                                onClick={() => deleteActivity(a.id)}
-                                className="p-2 sm:p-3 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-xl sm:rounded-2xl transition-all"
-                              >
-                                <Trash2 size={16} className="sm:size-[20px]" />
-                              </button>
+                                <button
+                                  onClick={() => deleteActivity(a.id)}
+                                  className="p-2.5 sm:p-4 text-muted-foreground hover:text-destructive hover:bg-destructive/5 rounded-2xl transition-all"
+                                  title="Delete"
+                                >
+                                  <Trash2 size={18} className="sm:size-[22px]" />
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -724,19 +774,20 @@ const ItineraryDetail = () => {
       {/* ADD ACTIVITY MODAL */}
       {showAdd && (
         <div 
-          className="fixed inset-0 bg-foreground/10 backdrop-blur-xl flex items-center justify-center z-[100] p-4"
+          className="fixed inset-0 bg-foreground/20 backdrop-blur-lg flex items-end sm:items-center justify-center z-[100] p-0 sm:p-4"
           onClick={() => setShowAdd(false)}
         >
           <div 
-            className="bg-card rounded-[2rem] sm:rounded-[3rem] p-5 sm:p-10 max-w-xl w-full shadow-[0_32px_128px_rgba(0,0,0,0.15)] border border-white/40 animate-scale-in"
+            className="bg-card rounded-t-[2.5rem] sm:rounded-[3rem] p-6 sm:p-10 max-w-xl w-full shadow-[0_-10px_40px_rgba(0,0,0,0.1)] sm:shadow-[0_32px_128px_rgba(0,0,0,0.15)] border border-white/40 animate-slide-up sm:animate-scale-in max-h-[92vh] overflow-y-auto overflow-x-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-6 sm:mb-10 text-center">
-              <h2 className="text-2xl sm:text-4xl font-display font-extrabold mb-2 sm:mb-3">
+            <div className="mb-6 sm:mb-10 text-center relative">
+              <div className="sm:hidden w-12 h-1.5 bg-border/50 rounded-full mx-auto mb-6" />
+              <h2 className="text-2xl sm:text-4xl font-display font-extrabold mb-1 sm:mb-3">
                 {editingActivity ? "Edit Activity" : "Add Activity"}
               </h2>
-              <p className="text-xs sm:text-sm text-muted-foreground font-medium">
-                {editingActivity ? "Update the details of this activity." : `Plan Day ${selectedDay + 1}.`}
+              <p className="text-[10px] sm:text-sm text-muted-foreground font-bold uppercase tracking-widest">
+                {editingActivity ? "Update the details" : `Day ${selectedDay + 1} Planning`}
               </p>
             </div>
 
@@ -755,8 +806,8 @@ const ItineraryDetail = () => {
                 </div>
 
                 <div className="col-span-2">
-                  <label className="block text-[10px] sm:text-xs font-black uppercase tracking-widest text-muted-foreground mb-2 sm:mb-3 ml-2">Category / Type</label>
-                  <div className="grid grid-cols-4 sm:grid-cols-4 gap-2">
+                  <label className="block text-[10px] sm:text-xs font-black uppercase tracking-widest text-muted-foreground mb-3 ml-2">Category</label>
+                  <div className="grid grid-cols-4 gap-2 sm:gap-3">
                     {Object.keys(activityIcons).map(type => {
                       const Icon = activityIcons[type];
                       return (
@@ -764,14 +815,14 @@ const ItineraryDetail = () => {
                           key={type}
                           type="button"
                           onClick={() => setForm({ ...form, type })}
-                          className={`flex flex-col items-center gap-1 sm:gap-2 p-2 sm:p-3 rounded-xl sm:rounded-2xl border transition-all ${
+                          className={`flex flex-col items-center gap-1.5 p-2 sm:p-4 rounded-2xl border transition-all ${
                             form.type === type 
-                              ? "bg-primary/10 border-primary text-primary" 
-                              : "border-border hover:border-primary/50 text-muted-foreground"
+                              ? "bg-primary text-white border-primary shadow-lg shadow-primary/20" 
+                              : "bg-background border-border hover:border-primary/50 text-muted-foreground"
                           }`}
                         >
-                          <Icon size={16} className="sm:size-[20px]" />
-                          <span className="text-[8px] sm:text-[10px] font-bold uppercase">{type}</span>
+                          <Icon size={18} className="sm:size-[22px]" />
+                          <span className="text-[7px] sm:text-[9px] font-black uppercase tracking-tighter sm:tracking-normal">{type}</span>
                         </button>
                       );
                     })}
