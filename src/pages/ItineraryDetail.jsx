@@ -750,7 +750,7 @@ const ItineraryDetail = () => {
                   )}
                 </div>
               </div>
-            )}      )}
+            )}
 
             {tab === "expenses" && <TripExpenses tripId={trip.id} trip={trip} />}
             {tab === "packing" && <TripPacking tripId={trip.id} />}
