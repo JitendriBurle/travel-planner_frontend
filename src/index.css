@@ -118,30 +118,74 @@
   }
   .glass-card {
     background: hsla(0, 0%, 100%, 0.85);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px);
     border: 1px solid hsla(0, 0%, 100%, 0.5);
-    box-shadow: 0 8px 32px -1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
   }
   .dark .glass-card {
     background: hsla(210, 30%, 12%, 0.7);
-    border: 1px solid hsla(210, 25%, 22%, 0.5);
+    border: 1px solid hsla(210, 25%, 22%, 0.3);
   }
   .shadow-travel {
-    box-shadow: 0 12px 40px -4px hsla(187, 72%, 43%, 0.12);
+    box-shadow: 0 24px 64px -8px hsla(187, 72%, 43%, 0.12);
   }
   .btn-saas {
-    @apply px-5 py-2.5 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2;
+    @apply px-5 py-2.5 rounded-2xl font-black uppercase tracking-widest text-[10px] sm:text-xs transition-all duration-300 flex items-center justify-center gap-2;
   }
   .btn-saas-primary {
-    @apply btn-saas gradient-primary text-white hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98];
+    @apply btn-saas gradient-primary text-white hover:shadow-2xl hover:shadow-primary/30 active:scale-[0.98] border border-white/20;
   }
   .btn-saas-secondary {
-    @apply btn-saas bg-card border border-border text-foreground hover:bg-muted active:scale-[0.98];
+    @apply btn-saas bg-card/60 backdrop-blur-md border border-border/80 text-foreground hover:bg-white active:scale-[0.98];
   }
   .input-saas {
-    @apply w-full bg-background border border-border rounded-xl px-4 py-3 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent focus:outline-none transition-all duration-200 placeholder:text-muted-foreground/50;
+    @apply w-full bg-background border-2 border-border/40 rounded-2xl px-5 py-4 text-foreground font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary focus:outline-none transition-all duration-300 placeholder:text-muted-foreground/40 placeholder:font-normal;
   }
-  .card-premium {
-    @apply bg-card border border-border rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300;
+  .animate-slide-up {
+    animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+  .animate-scale-in {
+    animation: scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .animate-pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
 }

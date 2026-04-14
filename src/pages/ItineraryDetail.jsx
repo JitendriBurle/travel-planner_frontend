@@ -410,7 +410,7 @@ const ItineraryDetail = () => {
   return (
     <div ref={itineraryRef} className="min-h-screen bg-background">
       {/* HERO HEADER */}
-      <div className="relative h-[300px] sm:h-[420px] overflow-hidden">
+      <div className="relative h-[320px] sm:h-[420px] overflow-hidden">
         {heroImage ? (
           <img
             src={heroImage}
@@ -423,10 +423,10 @@ const ItineraryDetail = () => {
 
         <div className="absolute inset-0 bg-gradient-to-t from-background via-black/20 to-black/40" />
 
-        <div className="relative h-full container mx-auto px-4 sm:px-6 flex flex-col justify-end pb-8 sm:pb-16">
+        <div className="relative h-full container mx-auto px-4 sm:px-6 flex flex-col justify-end pb-10 sm:pb-16">
           <button
             onClick={() => navigate("/dashboard")}
-            className="absolute top-4 sm:top-8 left-4 sm:left-6 flex items-center gap-2 text-white/80 hover:text-white transition-colors font-medium bg-black/40 backdrop-blur-md px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl group text-xs sm:text-base border border-white/10 z-50 shadow-2xl"
+            className="absolute top-4 sm:top-8 left-4 sm:left-6 flex items-center gap-2 text-white/80 hover:text-white transition-colors font-medium bg-black/40 backdrop-blur-md px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl group text-[10px] sm:text-base border border-white/10 z-50 shadow-2xl"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span className="hidden sm:inline">Back to Dashboard</span>
@@ -434,33 +434,33 @@ const ItineraryDetail = () => {
           </button>
 
           <div className="max-w-3xl animate-slide-up">
-            <div className="flex items-center gap-3 mb-3 sm:mb-4">
-              <span className="bg-primary/20 backdrop-blur-md border border-white/20 text-white px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest shadow-xl">
+            <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <span className="bg-primary/20 backdrop-blur-md border border-white/20 text-white px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[9px] sm:text-xs font-bold uppercase tracking-widest shadow-xl">
                 {tripStatus}
               </span>
             </div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-white mb-3 sm:mb-6 leading-tight drop-shadow-2xl tracking-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-black text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl tracking-tighter">
               {trip.name}
             </h1>
 
             <div className="flex flex-wrap gap-4 sm:gap-8 text-white/90">
               <div className="flex items-center gap-2 sm:gap-3">
-                <div className="h-8 w-8 sm:h-10 sm:w-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20">
-                  <MapPin size={16} className="sm:size-[20px] text-primary-foreground" />
+                <div className="h-7 w-7 sm:h-10 sm:w-10 bg-white/10 backdrop-blur-md rounded-lg sm:rounded-xl flex items-center justify-center border border-white/20">
+                  <MapPin size={14} className="sm:size-[20px] text-primary" />
                 </div>
                 <div>
-                  <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-white/60">Destination</p>
-                  <p className="font-bold text-sm sm:text-base md:text-lg">{trip.destination}</p>
+                  <p className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-white/50">Destination</p>
+                  <p className="font-bold text-xs sm:text-lg">{trip.destination}</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-2 sm:gap-3">
-                <div className="h-8 w-8 sm:h-10 sm:w-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20">
-                  <Clock size={16} className="sm:size-[20px] text-primary-foreground" />
+                <div className="h-7 w-7 sm:h-10 sm:w-10 bg-white/10 backdrop-blur-md rounded-lg sm:rounded-xl flex items-center justify-center border border-white/20">
+                  <Clock size={14} className="sm:size-[20px] text-primary" />
                 </div>
                 <div>
-                  <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-white/60">Duration</p>
-                  <p className="font-bold text-sm sm:text-base md:text-lg">{trip.start_date} — {trip.end_date}</p>
+                  <p className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-white/50">Duration</p>
+                  <p className="font-bold text-xs sm:text-lg">{trip.start_date} — {trip.end_date}</p>
                 </div>
               </div>
             </div>
@@ -471,41 +471,41 @@ const ItineraryDetail = () => {
       {/* HORIZONTAL WEATHER WIDGET */}
       {!weatherLoading && weather && (
         <div className="container mx-auto px-4 sm:px-6 relative z-20 -mt-6 sm:-mt-10 mb-8 animate-slide-up" style={{ animationDelay: '200ms' }}>
-          <div className="glass-card p-5 sm:p-7 rounded-[2rem] sm:rounded-[2.5rem] border border-white/40 shadow-travel flex flex-col md:flex-row items-center gap-6 md:gap-12 justify-between overflow-hidden relative">
-            <div className="absolute -left-10 -bottom-10 h-32 w-32 bg-primary/10 rounded-full blur-3xl" />
+          <div className="glass-card p-4 sm:p-7 rounded-3xl sm:rounded-[2.5rem] border border-white/40 shadow-travel flex flex-col lg:flex-row items-center gap-6 lg:gap-12 justify-between overflow-hidden relative">
+            <div className="absolute -left-10 -bottom-10 h-32 w-32 bg-primary/10 rounded-full blur-3xl opacity-50" />
             
             {/* CURRENT WEATHER */}
-            <div className="flex items-center gap-6 sm:gap-10 shrink-0 relative z-10 w-full md:w-auto justify-between md:justify-start">
-              <div className="flex items-center gap-4">
-                <span className="text-5xl sm:text-6xl font-display font-black text-foreground leading-none">{weather.temp}°</span>
+            <div className="flex items-center gap-6 sm:gap-10 shrink-0 relative z-10 w-full lg:w-auto justify-between lg:justify-start">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <span className="text-4xl sm:text-6xl font-display font-black text-foreground leading-none">{weather.temp}°</span>
                 <div className="flex flex-col">
-                  <span className="text-xs font-black text-primary uppercase tracking-widest">{weather.condition}</span>
-                  <span className="text-[10px] font-bold text-muted-foreground uppercase opacity-50">Current</span>
+                  <span className="text-[10px] sm:text-xs font-black text-primary uppercase tracking-widest">{weather.condition}</span>
+                  <span className="text-[8px] sm:text-[10px] font-bold text-muted-foreground uppercase opacity-50">Current</span>
                 </div>
               </div>
               <div className="flex gap-4 sm:gap-8 border-l border-border/50 pl-6 sm:pl-10">
                 <div>
-                  <p className="text-[9px] sm:text-[10px] font-black text-muted-foreground uppercase mb-1 tracking-tighter">Humidity</p>
-                  <p className="font-bold text-foreground text-sm sm:text-base">{weather.humidity}%</p>
+                  <p className="text-[8px] sm:text-[10px] font-black text-muted-foreground uppercase mb-1 tracking-tighter">Humidity</p>
+                  <p className="font-bold text-foreground text-xs sm:text-lg">{weather.humidity}%</p>
                 </div>
                 <div>
-                  <p className="text-[9px] sm:text-[10px] font-black text-muted-foreground uppercase mb-1 tracking-tighter">Wind</p>
-                  <p className="font-bold text-foreground text-sm sm:text-base">{weather.windSpeed} km/h</p>
+                  <p className="text-[8px] sm:text-[10px] font-black text-muted-foreground uppercase mb-1 tracking-tighter">Wind</p>
+                  <p className="font-bold text-foreground text-xs sm:text-lg">{weather.windSpeed} km/h</p>
                 </div>
               </div>
             </div>
 
             {/* UPCOMING FORECAST */}
             {forecast && forecast.length > 1 && (
-              <div className="flex gap-2.5 sm:gap-4 overflow-x-auto scrollbar-hide w-full md:w-auto md:max-w-3xl md:justify-end shrink-0 relative z-10 py-2 -mx-2 px-2 md:mx-0 md:px-0">
+              <div className="flex gap-2 sm:gap-4 overflow-x-auto scrollbar-hide w-full lg:w-auto lg:max-w-3xl lg:justify-end shrink-0 relative z-10 py-1 sm:py-2 -mx-2 px-2 lg:mx-0 lg:px-0">
                 {forecast.slice(1, 6).map((f, i) => (
-                  <div key={i} className="flex-shrink-0 flex items-center gap-3 p-3 sm:p-3.5 bg-white/40 rounded-2xl border border-white/60 shadow-sm min-w-[110px] sm:min-w-[130px] hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
-                    <span className="text-2xl sm:text-3xl drop-shadow-sm">{f.iconEmoji || "☀️"}</span>
+                  <div key={i} className="flex-shrink-0 flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3.5 bg-white/40 rounded-xl sm:rounded-2xl border border-white/60 shadow-sm min-w-[95px] sm:min-w-[130px] hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
+                    <span className="text-xl sm:text-3xl drop-shadow-sm">{f.iconEmoji || "☀️"}</span>
                     <div>
-                      <p className="text-[9px] sm:text-[10px] font-black text-foreground uppercase tracking-wider">
+                      <p className="text-[8px] sm:text-[10px] font-black text-foreground uppercase tracking-wider leading-tight">
                         {new Date(f.date).toLocaleDateString('en-US', { weekday: 'short' })}
                       </p>
-                      <span className="font-bold text-primary bg-primary/5 px-2 py-0.5 rounded-md text-[10px] sm:text-xs mt-1 inline-block">{f.temp}°</span>
+                      <span className="font-bold text-primary bg-primary/5 px-1.5 sm:px-2 py-0.5 rounded-md text-[9px] sm:text-xs mt-1 inline-block">{f.temp}°</span>
                     </div>
                   </div>
                 ))}
@@ -521,8 +521,8 @@ const ItineraryDetail = () => {
           <div className="lg:col-span-3">
             <div className="lg:sticky lg:top-8 space-y-6">
               {/* NAVIGATION & BUTTONS */}
-              <div className="glass-card p-2 sm:p-4 rounded-3xl sm:rounded-[2rem] border border-white/40 shadow-travel sticky top-4 lg:relative lg:top-0 z-[40]">
-                <div className="flex lg:flex-col gap-1.5 sm:gap-2 overflow-x-auto lg:overflow-visible pb-1 sm:pb-2 lg:pb-0 scrollbar-hide">
+              <div className="glass-card p-1.5 sm:p-4 rounded-2xl sm:rounded-[2rem] border border-white/40 shadow-travel sticky top-2 sm:top-4 lg:relative lg:top-0 z-[40]">
+                <div className="flex lg:flex-col gap-1 sm:gap-2 overflow-x-auto lg:overflow-visible pb-1 sm:pb-2 lg:pb-0 scrollbar-hide no-scrollbar">
                   {[
                     { id: "itinerary", icon: Clock, label: "Daily Plan" },
                     { id: "map", icon: MapPin, label: "Map View" },
@@ -535,14 +535,14 @@ const ItineraryDetail = () => {
                       <button
                         key={item.id}
                         onClick={() => setTab(item.id)}
-                        className={`flex flex-col lg:flex-row items-center gap-1.5 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl transition-all duration-300 group shrink-0 ${
+                        className={`flex flex-col lg:flex-row items-center gap-1 sm:gap-4 px-3 sm:px-6 py-2 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-300 group shrink-0 ${
                           tab === item.id 
                             ? "gradient-primary text-white shadow-lg shadow-primary/20 scale-[1.02]" 
                             : "text-muted-foreground hover:bg-white/80 hover:text-foreground"
                         }`}
                       >
-                        <item.icon className={`h-4 w-4 sm:h-5 sm:w-5 ${tab === item.id ? "opacity-100" : "opacity-60"}`} />
-                        <span className="font-bold text-[10px] sm:text-xs lg:text-sm whitespace-nowrap">{item.label}</span>
+                        <item.icon className={`h-3.5 w-3.5 sm:h-5 sm:w-5 ${tab === item.id ? "opacity-100" : "opacity-60"}`} />
+                        <span className="font-bold text-[8px] sm:text-xs lg:text-sm whitespace-nowrap">{item.label}</span>
                       </button>
                   ))}
                 </div>
@@ -605,31 +605,31 @@ const ItineraryDetail = () => {
               <div className="lg:hidden flex gap-3 mt-4">
                 <button
                   onClick={() => setShowShareMenu(!showShareMenu)}
-                  className="flex-1 btn-saas-secondary py-3.5 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold shadow-sm relative"
+                  className="flex-1 btn-saas-secondary py-3.5 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold shadow-sm relative overflow-visible"
                 >
                   <Share2 size={16} /> Share
                   {showShareMenu && (
-                        <div className="absolute bottom-full left-0 mb-3 w-56 bg-card glass-card rounded-2xl p-2 border border-white/60 shadow-2xl z-[100] animate-scale-in origin-bottom-left">
+                        <div className="absolute bottom-full left-0 mb-3 w-48 sm:w-56 bg-card glass-card rounded-2xl p-1.5 sm:p-2 border border-white/60 shadow-2xl z-[100] animate-scale-in origin-bottom-left">
                           <button 
                             onClick={() => { shareVia("whatsapp"); setShowShareMenu(false); }}
-                            className="w-full p-3 text-left text-foreground hover:bg-primary/10 hover:text-primary rounded-xl transition-all flex items-center gap-3 group/share"
+                            className="w-full p-3 text-left text-foreground hover:bg-primary/10 hover:text-primary rounded-xl transition-all flex items-center gap-2.5 group/share"
                           >
                             <MessageCircle size={16} className="text-primary/70 group-hover/share:text-primary" />
-                            <span className="text-xs font-bold">WhatsApp</span>
+                            <span className="text-[10px] sm:text-xs font-bold">WhatsApp</span>
                           </button>
                           <button 
                             onClick={() => { shareVia("email"); setShowShareMenu(false); }}
-                            className="w-full p-3 text-left text-foreground hover:bg-primary/10 hover:text-primary rounded-xl transition-all flex items-center gap-3 group/share"
+                            className="w-full p-3 text-left text-foreground hover:bg-primary/10 hover:text-primary rounded-xl transition-all flex items-center gap-2.5 group/share"
                           >
                             <Mail size={16} className="text-primary/70 group-hover/share:text-primary" />
-                            <span className="text-xs font-bold">Email</span>
+                            <span className="text-[10px] sm:text-xs font-bold">Email</span>
                           </button>
                           <button 
                             onClick={() => { shareVia("copy"); setShowShareMenu(false); }}
-                            className="w-full p-3 text-left text-foreground hover:bg-primary/10 hover:text-primary rounded-xl transition-all flex items-center gap-3 group/share border-t border-border/50 mt-1"
+                            className="w-full p-3 text-left text-foreground hover:bg-primary/10 hover:text-primary rounded-xl transition-all flex items-center gap-2.5 group/share border-t border-border/50 mt-1"
                           >
                             <Copy size={16} className="text-primary/70 group-hover/share:text-primary" />
-                            <span className="text-xs font-bold">Copy Link</span>
+                            <span className="text-[10px] sm:text-xs font-bold">Copy Link</span>
                           </button>
                         </div>
                       )}
@@ -647,32 +647,32 @@ const ItineraryDetail = () => {
           {/* RIGHT COLUMN: MAIN CONTENT */}
           <div className="lg:col-span-9">
             {tab === "itinerary" && (
-              <div className="animate-fade-in space-y-8">
+              <div className="animate-fade-in space-y-6 sm:space-y-8">
                 {/* DAY SELECTOR */}
-                <div className="bg-white/50 backdrop-blur-xl p-1.5 sm:p-2 rounded-[2rem] sm:rounded-[2.5rem] border border-white/40 shadow-sm flex gap-1.5 sm:gap-2 overflow-x-auto scrollbar-hide">
+                <div className="bg-white/50 backdrop-blur-xl p-1 sm:p-2 rounded-2xl sm:rounded-[2.5rem] border border-white/40 shadow-sm flex gap-1 sm:gap-2 overflow-x-auto scrollbar-hide no-scrollbar">
                   {dayList.map((d, i) => (
                     <button
                       key={i}
                       onClick={() => setSelectedDay(i)}
-                      className={`flex-shrink-0 min-w-[70px] sm:min-w-[100px] px-4 sm:px-6 py-3 sm:py-4 rounded-[1.5rem] sm:rounded-[2rem] transition-all duration-300 ${
-                        selectedDay === i 
+                      className={`flex-shrink-0 min-w-[60px] sm:min-w-[100px] px-3 sm:px-6 py-2.5 sm:py-4 rounded-xl sm:rounded-[2rem] transition-all duration-300 ${
+                        setSelectedDay === i || selectedDay === i
                           ? "bg-white shadow-xl text-primary border border-primary/10" 
                           : "text-muted-foreground hover:text-foreground hover:bg-white/30"
                       }`}
                     >
-                      <p className="text-[8px] sm:text-[10px] font-black uppercase tracking-widest opacity-40">Day</p>
-                      <p className="text-lg sm:text-xl font-display font-extrabold">{i + 1}</p>
+                      <p className="text-[7px] sm:text-[10px] font-black uppercase tracking-widest opacity-40">Day</p>
+                      <p className="text-sm sm:text-xl font-display font-extrabold">{i + 1}</p>
                     </button>
                   ))}
                 </div>
 
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-foreground">
+                  <h2 className="text-xl sm:text-3xl font-display font-black text-foreground">
                     Day {selectedDay + 1} Plan
                   </h2>
                   <button
                     onClick={() => setShowAdd(true)}
-                    className="btn-saas-primary py-3.5 sm:py-4 self-start sm:self-auto"
+                    className="btn-saas-primary py-3 sm:py-4 px-6 text-sm self-start sm:self-auto"
                   >
                     <Plus size={18} /> Plan Activity
                   </button>
@@ -681,8 +681,8 @@ const ItineraryDetail = () => {
                 {/* ACTIVITIES LIST */}
                 <div className="relative pl-6 sm:pl-10 border-l-2 border-dashed border-primary/20 space-y-6 sm:space-y-10">
                   {dayActivities.length === 0 ? (
-                    <div className="bg-white/40 border-2 border-dashed border-border rounded-[2.5rem] py-16 sm:py-24 text-center px-6">
-                      <p className="text-muted-foreground font-bold italic max-w-xs mx-auto">No activities planned yet. What's the adventure for today?</p>
+                    <div className="bg-white/40 border-2 border-dashed border-border rounded-3xl sm:rounded-[2.5rem] py-16 sm:py-24 text-center px-6">
+                      <p className="text-muted-foreground text-sm sm:text-base font-bold italic max-w-xs mx-auto">No activities planned yet.</p>
                     </div>
                   ) : (
                     dayActivities.map((a, idx) => {
@@ -690,61 +690,57 @@ const ItineraryDetail = () => {
                       return (
                         <div key={a.id} className="relative animate-slide-up" style={{ animationDelay: `${idx * 100}ms` }}>
                           <div className="absolute -left-[33px] sm:-left-[49px] top-6 h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-primary border-4 border-white shadow-lg z-10" />
-                          <div className="glass-card p-4 sm:p-7 rounded-[1.5rem] sm:rounded-[2.5rem] flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6 group hover:shadow-2xl hover:bg-white transition-all duration-500 border border-white/60">
+                          <div className="glass-card p-4 sm:p-7 rounded-2xl sm:rounded-[2.5rem] flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6 group hover:shadow-2xl hover:bg-white transition-all duration-500 border border-white/60">
                             <div className="flex gap-4 sm:gap-8 items-center flex-1">
-                              <div className="h-12 w-12 sm:h-16 sm:w-16 gradient-primary rounded-2xl sm:rounded-3xl flex items-center justify-center text-white shadow-lg shadow-primary/20 rotate-3 group-hover:rotate-0 transition-transform flex-shrink-0">
-                                <Icon size={20} className="sm:size-[28px]" />
+                              <div className="h-10 w-10 sm:h-16 sm:w-16 gradient-primary rounded-xl sm:rounded-3xl flex items-center justify-center text-white shadow-lg shadow-primary/20 rotate-3 group-hover:rotate-0 transition-transform flex-shrink-0">
+                                <Icon size={18} className="sm:size-[28px]" />
                               </div>
                               <div className="min-w-0 flex-1">
-                                <div className="flex items-center gap-2 mb-1.5">
-                                  <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-primary bg-primary/5 px-2 py-1 rounded leading-none">
+                                <div className="flex items-center gap-2 mb-1">
+                                  <span className="text-[8px] sm:text-xs font-black uppercase tracking-widest text-primary bg-primary/5 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded leading-none">
                                     {a.time || "OPEN TIME"}
                                   </span>
                                 </div>
-                                <h4 className="text-lg sm:text-3xl font-display font-black text-foreground truncate tracking-tight">{a.title}</h4>
+                                <h4 className="text-base sm:text-3xl font-display font-black text-foreground truncate tracking-tight">{a.title}</h4>
                                 {a.location && (
-                                  <p className="text-xs sm:text-base text-muted-foreground font-medium flex items-center gap-1.5 mt-1.5 opacity-80">
-                                    <MapPin size={12} className="sm:size-[18px] text-primary" /> {a.location}
+                                  <p className="text-[10px] sm:text-base text-muted-foreground font-medium flex items-center gap-1 mt-1 opacity-80">
+                                    <MapPin size={10} className="sm:size-[18px] text-primary" /> {a.location}
                                   </p>
                                 )}
                               </div>
                             </div>
 
                             <div className="flex items-center justify-between sm:justify-end gap-2 border-t sm:border-t-0 pt-3 sm:pt-0 border-border/40 sm:opacity-0 sm:group-hover:opacity-100 transition-all">
-                              <div className="flex items-center gap-1 sm:gap-1.5 mr-auto sm:mr-3 sm:border-r sm:pr-3 border-border/30">
+                              <div className="flex items-center gap-1 mr-auto sm:mr-3 sm:border-r sm:pr-3 border-border/30">
                                 <button 
                                   onClick={() => moveActivity(idx, 'up')}
                                   disabled={idx === 0}
-                                  className="p-2 text-muted-foreground hover:text-primary disabled:opacity-20 transition-all bg-muted/30 sm:bg-transparent rounded-lg"
-                                  title="Move Up"
+                                  className="p-2 text-muted-foreground hover:text-primary disabled:opacity-10 transition-all bg-muted/20 sm:bg-transparent rounded-lg"
                                 >
-                                  <ChevronUp size={18} />
+                                  <ChevronUp size={16} />
                                 </button>
                                 <button 
                                   onClick={() => moveActivity(idx, 'down')}
                                   disabled={idx === dayActivities.length - 1}
-                                  className="p-2 text-muted-foreground hover:text-primary disabled:opacity-20 transition-all bg-muted/30 sm:bg-transparent rounded-lg"
-                                  title="Move Down"
+                                  className="p-2 text-muted-foreground hover:text-primary disabled:opacity-10 transition-all bg-muted/20 sm:bg-transparent rounded-lg"
                                 >
-                                  <ChevronDown size={18} />
+                                  <ChevronDown size={16} />
                                 </button>
                               </div>
 
                               <div className="flex items-center gap-1.5">
                                 <button
                                   onClick={() => startEdit(a)}
-                                  className="p-2.5 sm:p-4 text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-2xl transition-all"
-                                  title="Edit"
+                                  className="p-2 sm:p-4 text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
                                 >
-                                  <Edit2 size={18} className="sm:size-[22px]" />
+                                  <Edit2 size={16} className="sm:size-[22px]" />
                                 </button>
 
                                 <button
                                   onClick={() => deleteActivity(a.id)}
-                                  className="p-2.5 sm:p-4 text-muted-foreground hover:text-destructive hover:bg-destructive/5 rounded-2xl transition-all"
-                                  title="Delete"
+                                  className="p-2 sm:p-4 text-muted-foreground hover:text-destructive hover:bg-destructive/5 rounded-xl transition-all"
                                 >
-                                  <Trash2 size={18} className="sm:size-[22px]" />
+                                  <Trash2 size={16} className="sm:size-[22px]" />
                                 </button>
                               </div>
                             </div>

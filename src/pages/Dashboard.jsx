@@ -162,70 +162,70 @@ const Dashboard = () => {
         
         {/* ANALYTICS PREVIEW */}
         {!loading && trips.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mb-16 animate-fade-in">
-            <div className="glass-card p-6 lg:p-8 rounded-[2rem] lg:rounded-[2.5rem] border border-white/60 shadow-travel group hover:shadow-2xl transition-all duration-500">
-               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-2">Total Trips</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-8 mb-12 sm:mb-16 animate-fade-in px-2 sm:px-0">
+            <div className="glass-card p-5 sm:p-6 lg:p-8 rounded-3xl lg:rounded-[2.5rem] border border-white/60 shadow-travel group hover:shadow-2xl transition-all duration-500">
+               <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-1.5 sm:mb-2">Total Trips</p>
                <div className="flex items-end gap-2">
-                 <h4 className="text-4xl lg:text-5xl font-display font-black text-foreground">{trips.length}</h4>
-                 <span className="text-xs font-bold text-primary mb-1.5 lg:mb-2 italic">Trips</span>
+                 <h4 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-foreground leading-none">{trips.length}</h4>
+                 <span className="text-[10px] sm:text-xs font-bold text-primary mb-1 lg:mb-2 italic">Trips</span>
                </div>
             </div>
-            <div className="glass-card p-6 lg:p-8 rounded-[2rem] lg:rounded-[2.5rem] border border-white/60 shadow-travel group hover:shadow-2xl transition-all duration-500">
-               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-2">Upcoming</p>
+            <div className="glass-card p-5 sm:p-6 lg:p-8 rounded-3xl lg:rounded-[2.5rem] border border-white/60 shadow-travel group hover:shadow-2xl transition-all duration-500">
+               <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-1.5 sm:mb-2">Upcoming</p>
                <div className="flex items-end gap-2">
-                 <h4 className="text-4xl lg:text-5xl font-display font-black text-foreground">{upcomingCount}</h4>
-                 <span className="text-xs font-bold text-primary mb-1.5 lg:mb-2 italic">Trips</span>
+                 <h4 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-foreground leading-none">{upcomingCount}</h4>
+                 <span className="text-[10px] sm:text-xs font-bold text-primary mb-1 lg:mb-2 italic">Trips</span>
                </div>
             </div>
-            <div className="glass-card p-6 lg:p-8 rounded-[2rem] lg:rounded-[2.5rem] border border-white/60 shadow-travel group hover:shadow-2xl transition-all duration-500">
-               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-2">Destinations</p>
+            <div className="glass-card p-5 sm:p-6 lg:p-8 rounded-3xl lg:rounded-[2.5rem] border border-white/60 shadow-travel group hover:shadow-2xl transition-all duration-500 sm:col-span-2 md:col-span-1">
+               <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-1.5 sm:mb-2">Destinations</p>
                <div className="flex items-end gap-2">
-                 <h4 className="text-4xl lg:text-5xl font-display font-black text-foreground">
+                 <h4 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-foreground leading-none">
                    {new Set(trips.map(t => t.destination)).size}
                  </h4>
-                 <span className="text-xs font-bold text-primary mb-1.5 lg:mb-2 italic">Cities</span>
+                 <span className="text-[10px] sm:text-xs font-bold text-primary mb-1 lg:mb-2 italic">Cities</span>
                </div>
             </div>
           </div>
         )}
 
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 border-b border-border/50 pb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16 border-b border-border/50 pb-8 sm:pb-12">
           <div className="animate-slide-up">
-            <p className="text-[10px] sm:text-xs font-black uppercase tracking-[0.4em] text-primary mb-4 opacity-80">My Dashboard</p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-black text-foreground tracking-tight leading-tight">
+            <p className="text-[9px] sm:text-xs font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-primary mb-3 sm:mb-4 opacity-80">My Dashboard</p>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-display font-black text-foreground tracking-tight leading-tight">
               Welcome, <span className="text-gradient inline-block">{profile?.name?.split(' ')[0] || "Explorer"}</span>
             </h1>
           </div>
 
           <button
             onClick={() => setShowModal(true)}
-            className="btn-saas-primary py-4 sm:py-5 px-8 sm:px-10 rounded-2xl sm:rounded-[2rem] animate-slide-up shadow-xl shadow-primary/20 hover:scale-105 transition-transform text-sm sm:text-base"
+            className="btn-saas-primary w-full md:w-auto py-4 sm:py-5 px-8 sm:px-10 rounded-2xl sm:rounded-[2rem] animate-slide-up shadow-xl shadow-primary/20 hover:scale-105 transition-transform text-sm sm:text-base flex items-center justify-center"
           >
             <Plus className="h-5 w-5 sm:h-6 sm:w-6" /> Plan New Trip
           </button>
         </div>
 
         {/* SEARCH AND FILTERS */}
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 mb-10 animate-fade-in" style={{ animationDelay: '100ms' }}>
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 mb-8 sm:mb-10 animate-fade-in" style={{ animationDelay: '100ms' }}>
           <div className="relative flex-1 group">
             <input
               type="text"
-              placeholder="Search trips by name or destination..."
+              placeholder="Search trips by name..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="input-saas py-3.5 lg:py-4 !pl-12 rounded-2xl lg:rounded-[2rem]"
+              className="input-saas py-3.5 lg:py-4 !pl-12 rounded-2xl lg:rounded-[2rem] text-sm sm:text-base"
             />
             <div className="absolute left-5 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors">
               <Search className="h-5 w-5" />
             </div>
           </div>
           
-          <div className="flex overflow-x-auto bg-white/40 backdrop-blur-md p-1.5 rounded-2xl lg:rounded-[2rem] border border-white/60 shadow-sm scrollbar-hide">
+          <div className="flex overflow-x-auto bg-white/40 backdrop-blur-md p-1 sm:p-1.5 rounded-2xl lg:rounded-[2rem] border border-white/60 shadow-sm scrollbar-hide no-scrollbar">
             {["all", "active", "upcoming", "past"].map((f) => (
               <button
                 key={f}
                 onClick={() => setStatusFilter(f)}
-                className={`flex-shrink-0 lg:flex-1 px-6 lg:px-8 py-2.5 lg:py-3 rounded-xl lg:rounded-[1.5rem] text-[9px] lg:text-xs font-black uppercase tracking-widest transition-all
+                className={`flex-shrink-0 flex-1 px-5 sm:px-8 py-2.5 lg:py-3 rounded-xl lg:rounded-[1.5rem] text-[9px] sm:text-[10px] lg:text-xs font-black uppercase tracking-widest transition-all
                   ${statusFilter === f ? "gradient-primary text-white shadow-lg" : "text-muted-foreground hover:text-foreground"}
                 `}
               >
@@ -335,20 +335,21 @@ const Dashboard = () => {
       {/* CREATE TRIP MODAL */}
       {showModal && (
         <div
-          className="fixed inset-0 bg-foreground/10 backdrop-blur-xl flex items-center justify-center z-[100] p-4 animate-fade-in"
+          className="fixed inset-0 bg-foreground/10 backdrop-blur-xl flex items-end sm:items-center justify-center z-[100] p-0 sm:p-4 animate-fade-in"
           onClick={() => setShowModal(false)}
         >
           <div
-            className="bg-card glass-card rounded-[3.5rem] p-12 max-w-xl w-full shadow-[0_40px_120px_rgba(0,0,0,0.15)] border border-white/60 animate-scale-in"
+            className="bg-card glass-card rounded-t-[2.5rem] sm:rounded-[3.5rem] p-8 sm:p-12 max-w-xl w-full shadow-[0_40px_120px_rgba(0,0,0,0.15)] border-t sm:border border-white/60 animate-slide-up sm:animate-scale-in max-h-[95vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="text-center mb-10">
-              <h1 className="text-3xl font-display font-extrabold text-foreground">Welcome Back</h1>
-              <p className="text-muted-foreground font-medium">Plan your next trip or manage your existing ones.</p>
+            <div className="text-center mb-8 sm:mb-10">
+              <div className="sm:hidden w-12 h-1.5 bg-border/50 rounded-full mx-auto mb-6" />
+              <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-foreground">Plan Your Adventure</h1>
+              <p className="text-sm sm:text-base text-muted-foreground font-medium">Capture the details of your next journey.</p>
             </div>
 
             {form.destination && form.destination.length >= 3 && (
-              <div className="mb-8 relative h-48 w-full rounded-[2.5rem] overflow-hidden bg-muted/30 border border-white/40 shadow-inner animate-fade-in group">
+              <div className="mb-6 sm:mb-8 relative h-40 sm:h-48 w-full rounded-2xl sm:rounded-[2.5rem] overflow-hidden bg-muted/30 border border-white/40 shadow-inner animate-fade-in group">
                 {previewImage && !isFetchingPreview ? (
                   <img src={previewImage} alt="Destination Preview" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 ) : (
@@ -357,89 +358,89 @@ const Dashboard = () => {
                   </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-6 left-8 flex items-center gap-2 text-white">
-                  <MapPin className="h-5 w-5 text-primary" />
-                  <span className="text-xl font-display font-bold tracking-wide">{form.destination}</span>
+                <div className="absolute bottom-4 sm:bottom-6 left-6 sm:left-8 flex items-center gap-2 text-white">
+                  <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                  <span className="text-lg sm:text-xl font-display font-bold tracking-wide">{form.destination}</span>
                 </div>
               </div>
             )}
 
-            <form onSubmit={addTrip} className="space-y-6">
-              <div className="space-y-6">
+            <form onSubmit={addTrip} className="space-y-5 sm:space-y-6">
+              <div className="space-y-5 sm:space-y-6">
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3 ml-2">Trip Name</label>
+                  <label className="block text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 sm:mb-3 ml-2">Trip Name</label>
                   <input
                     placeholder="e.g. Summer in the Swiss Alps"
                     value={form.name}
                     autoFocus
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     required
-                    className="input-saas py-4 text-lg"
+                    className="input-saas py-3.5 sm:py-4 text-base sm:text-lg"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3 ml-2">Destination</label>
+                  <label className="block text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 sm:mb-3 ml-2">Destination</label>
                   <input
                     placeholder="Search for a city..."
                     value={form.destination}
                     onChange={(e) => setForm({ ...form, destination: e.target.value })}
                     required
-                    className="input-saas py-4"
+                    className="input-saas py-3.5 sm:py-4 text-base"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3 ml-2">Start Date</label>
+                    <label className="block text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 sm:mb-3 ml-2">Start Date</label>
                     <input
                       type="date"
                       value={form.startDate}
                       onChange={(e) => setForm({ ...form, startDate: e.target.value })}
                       required
-                      className="input-saas py-4"
+                      className="input-saas py-3.5 sm:py-4 text-sm sm:text-base"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3 ml-2">End Date</label>
+                    <label className="block text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 sm:mb-3 ml-2">End Date</label>
                     <input
                       type="date"
                       value={form.endDate}
                       onChange={(e) => setForm({ ...form, endDate: e.target.value })}
                       required
-                      className="input-saas py-4"
+                      className="input-saas py-3.5 sm:py-4 text-sm sm:text-base"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3 ml-2">Notes</label>
+                  <label className="block text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 sm:mb-3 ml-2">Notes</label>
                   <textarea
-                    placeholder="Optional details about this trip..."
+                    placeholder="Optional details..."
                     value={form.notes}
                     onChange={(e) => setForm({ ...form, notes: e.target.value })}
                     rows={2}
-                    className="input-saas py-4 resize-none"
+                    className="input-saas py-3.5 sm:py-4 text-base resize-none"
                   />
                 </div>
               </div>
 
-              <div className="flex gap-4 pt-10">
+              <div className="flex gap-3 sm:gap-4 pt-6 sm:pt-10">
                 <button
                   type="button"
                   onClick={() => {
                     setShowModal(false);
                     setPreviewImage(null);
                   }}
-                  className="btn-saas-secondary flex-1 py-4 rounded-3xl"
+                  className="btn-saas-secondary flex-1 py-3.5 sm:py-4 rounded-2xl sm:rounded-3xl text-sm sm:text-base"
                 >
                   Discard
                 </button>
 
                 <button
                   type="submit"
-                  className="btn-saas-primary flex-1 py-4 rounded-3xl"
+                  className="btn-saas-primary flex-1 py-3.5 sm:py-4 rounded-2xl sm:rounded-3xl text-sm sm:text-base"
                 >
                   Create Trip
                 </button>

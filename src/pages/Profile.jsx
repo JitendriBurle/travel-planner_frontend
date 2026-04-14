@@ -38,63 +38,63 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-6 py-12 max-w-2xl">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 max-w-2xl">
         <button 
           onClick={() => navigate('/dashboard')} 
-          className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-all font-black uppercase tracking-widest text-xs mb-10 group"
+          className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-all font-black uppercase tracking-widest text-[10px] sm:text-xs mb-8 sm:mb-10 group"
         >
           <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" /> Back to Dashboard
         </button>
 
-        <div className="glass-card rounded-[3.5rem] border border-white/60 p-12 shadow-travel transition-all duration-500 animate-slide-up">
-          <div className="flex items-center gap-8 mb-12">
-            <div className="w-24 h-24 rounded-[2.5rem] gradient-primary flex items-center justify-center text-white text-4xl font-display font-black shadow-2xl rotate-3">
+        <div className="glass-card rounded-[2.5rem] sm:rounded-[3.5rem] border border-white/60 p-8 sm:p-12 shadow-travel transition-all duration-500 animate-slide-up">
+          <div className="flex flex-col sm:flex-row items-center sm:items-center gap-6 sm:gap-8 mb-10 sm:mb-12 text-center sm:text-left">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-[2rem] sm:rounded-[2.5rem] gradient-primary flex items-center justify-center text-white text-3xl sm:text-4xl font-display font-black shadow-2xl rotate-3">
               {(profile?.name || 'U')[0].toUpperCase()}
             </div>
             <div>
-              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-2">Account Details</p>
-              <h1 className="text-4xl font-display font-black text-foreground tracking-tight">My Profile</h1>
-              <p className="text-muted-foreground font-medium italic mt-1">{user?.email}</p>
+              <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-2">Account Details</p>
+              <h1 className="text-3xl sm:text-4xl font-display font-black text-foreground tracking-tight">My Profile</h1>
+              <p className="text-muted-foreground font-medium italic mt-1 text-sm sm:text-base">{user?.email}</p>
             </div>
           </div>
 
-          <form onSubmit={handleSave} className="space-y-8">
-            <div className="grid grid-cols-2 gap-6">
+          <form onSubmit={handleSave} className="space-y-6 sm:space-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3 ml-2 block">Full Name</label>
+                <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 sm:mb-3 ml-2 block">Full Name</label>
                 <div className="relative">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-primary/40" />
+                   <User className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-primary/40" />
                   <input 
                     value={formData.name} 
                     onChange={e => setFormData({ ...formData, name: e.target.value })} 
                     required
-                    className="input-saas pl-12 py-4" 
+                    className="input-saas pl-12 py-3.5 sm:py-4 text-sm sm:text-base" 
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3 ml-2 block">Current Location</label>
+                <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 sm:mb-3 ml-2 block">Current Location</label>
                 <div className="relative">
                   <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-primary/40" />
                   <input 
                     placeholder="e.g. San Francisco, CA"
                     value={formData.location} 
                     onChange={e => setFormData({ ...formData, location: e.target.value })} 
-                    className="input-saas pl-12 py-4" 
+                    className="input-saas pl-12 py-3.5 sm:py-4 text-sm sm:text-base" 
                   />
                 </div>
               </div>
             </div>
 
             <div>
-              <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3 ml-2 block">Travel Style</label>
+              <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 sm:mb-3 ml-2 block">Travel Style</label>
               <div className="relative">
                 <Compass className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-primary/40" />
                 <select 
                   value={formData.travel_style} 
                   onChange={e => setFormData({ ...formData, travel_style: e.target.value })} 
-                  className="input-saas pl-12 py-4 appearance-none"
+                  className="input-saas pl-12 py-3.5 sm:py-4 appearance-none text-sm sm:text-base"
                 >
                   <option value="Explorer">Explorer (All-around)</option>
                   <option value="Luxury">Luxury (Premium & Comfort)</option>
@@ -106,7 +106,7 @@ const Profile = () => {
             </div>
 
             <div>
-              <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3 ml-2 block">Bio / Notes</label>
+              <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2 sm:mb-3 ml-2 block">Bio / Notes</label>
               <div className="relative">
                 <Info className="absolute left-4 top-5 h-4 w-4 text-primary/40" />
                 <textarea 
@@ -114,16 +114,16 @@ const Profile = () => {
                   value={formData.bio} 
                   onChange={e => setFormData({ ...formData, bio: e.target.value })} 
                   rows={4}
-                  className="input-saas pl-12 py-4 resize-none" 
+                  className="input-saas pl-12 py-3.5 sm:py-4 resize-none text-sm sm:text-base" 
                 />
               </div>
             </div>
 
-            <div className="pt-6">
+            <div className="pt-4 sm:pt-6">
               <button 
                 type="submit" 
                 disabled={saving}
-                className="btn-saas-primary w-full py-5 rounded-3xl text-lg flex items-center justify-center gap-3 shadow-2xl"
+                className="btn-saas-primary w-full py-4 sm:py-5 rounded-2xl sm:rounded-3xl text-base sm:text-lg flex items-center justify-center gap-3 shadow-2xl"
               >
                 {saving ? (
                   <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -135,11 +135,11 @@ const Profile = () => {
             </div>
           </form>
 
-          <div className="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
-            <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+          <div className="mt-10 sm:mt-12 pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-muted-foreground order-2 sm:order-1">
               Member since {user?.created_at ? new Date(user.created_at).toLocaleDateString(undefined, { month: 'long', year: 'numeric' }) : 'N/A'}
             </p>
-            <div className="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_12px_rgba(34,197,94,0.5)]" />
+            <div className="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_12px_rgba(34,197,94,0.5)] order-1 sm:order-2" />
           </div>
         </div>
       </div>

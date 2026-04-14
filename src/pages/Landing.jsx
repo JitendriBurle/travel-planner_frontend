@@ -30,20 +30,20 @@ const Landing = () => {
             <span className="text-white text-[10px] uppercase font-black tracking-[0.3em]">Version 2.0 Now Live</span>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl md:text-9xl font-display font-black text-white mb-8 tracking-tighter leading-tight drop-shadow-2xl animate-slide-up">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-black text-white mb-6 sm:mb-8 tracking-tighter leading-[1.1] sm:leading-tight drop-shadow-2xl animate-slide-up">
             Script Your <br />
             <span className="text-gradient">Epic Story.</span>
           </h1>
 
-          <p className="text-lg md:text-2xl text-white/80 max-w-3xl mx-auto mb-12 font-medium leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          <p className="text-base sm:text-lg md:text-2xl text-white/80 max-w-3xl mx-auto mb-8 sm:mb-12 font-medium leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Elevate your travel experience with Voyager. The ultimate companion for the modern traveler—organize, track, and share your adventures with precision.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <Link to="/signup" className="btn-saas-primary text-lg sm:text-xl py-4 sm:py-5 px-8 sm:px-12 rounded-[2rem] shadow-[0_24px_48px_rgba(0,0,0,0.2)]">
+            <Link to="/signup" className="btn-saas-primary text-base sm:text-lg md:text-xl py-4 sm:py-5 px-8 sm:px-12 rounded-2xl sm:rounded-[2rem] shadow-[0_24px_48px_rgba(0,0,0,0.2)] flex items-center justify-center gap-2">
               Get Started <ArrowRight className="h-5 w-5 sm:h-6 sm:w-6" />
             </Link>
-            <Link to="/login" className="bg-white/10 backdrop-blur-md border-2 border-white/20 text-white font-black uppercase tracking-widest text-[10px] sm:text-xs px-8 sm:px-12 py-4 sm:py-5 rounded-[2rem] hover:bg-white/20 transition-all">
+            <Link to="/login" className="bg-white/10 backdrop-blur-md border-2 border-white/20 text-white font-black uppercase tracking-widest text-[10px] sm:text-xs px-8 sm:px-12 py-4 sm:py-5 rounded-2xl sm:rounded-[2rem] hover:bg-white/20 transition-all flex items-center justify-center">
               Member Access
             </Link>
           </div>
@@ -59,21 +59,21 @@ const Landing = () => {
       </section>
 
       {/* FEATURES GRID */}
-      <section className="py-32 container mx-auto px-6">
-        <div className="text-center mb-24">
-          <p className="text-primary font-black uppercase tracking-[0.4em] text-xs mb-4">The Voyager Toolkit</p>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-black text-foreground mb-6">Built for You.</h2>
-          <p className="text-muted-foreground text-lg sm:text-xl max-w-2xl mx-auto">Precision tools designed for the world's most passionate travelers.</p>
+      <section className="py-20 sm:py-32 container mx-auto px-6">
+        <div className="text-center mb-16 sm:mb-24">
+          <p className="text-primary font-black uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-4">The Voyager Toolkit</p>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-black text-foreground mb-6">Built for You.</h2>
+          <p className="text-muted-foreground text-base sm:text-xl max-w-2xl mx-auto">Precision tools designed for the world's most passionate travelers.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {features.map((f, i) => (
-            <div key={f.title} className="glass-card group p-8 sm:p-10 rounded-[2.5rem] sm:rounded-[3rem] border border-white/40 shadow-travel hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-2 animate-slide-up" style={{ animationDelay: `${i * 0.1}s` }}>
-              <div className="w-20 h-20 rounded-[2rem] gradient-primary flex items-center justify-center mb-8 shadow-lg shadow-primary/20 rotate-3 group-hover:rotate-0 transition-transform">
-                <f.icon className="h-10 w-10 text-white" />
+            <div key={f.title} className="glass-card group p-8 sm:p-10 rounded-3xl sm:rounded-[3rem] border border-white/40 shadow-travel hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-2 animate-slide-up" style={{ animationDelay: `${i * 0.1}s` }}>
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-[2rem] gradient-primary flex items-center justify-center mb-6 sm:mb-8 shadow-lg shadow-primary/20 rotate-3 group-hover:rotate-0 transition-transform">
+                <f.icon className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
               </div>
-              <h3 className="text-3xl font-display font-black mb-4 text-foreground">{f.title}</h3>
-              <p className="text-muted-foreground leading-relaxed font-medium">{f.desc}</p>
+              <h3 className="text-2xl sm:text-3xl font-display font-black mb-4 text-foreground">{f.title}</h3>
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed font-medium">{f.desc}</p>
             </div>
           ))}
         </div>
@@ -81,15 +81,15 @@ const Landing = () => {
 
       {/* CTA SECTION */}
       <section className="py-20 sm:py-32 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto glass-card rounded-[3rem] sm:rounded-[4rem] p-10 sm:p-20 text-center relative overflow-hidden border border-white">
+        <div className="max-w-6xl mx-auto glass-card rounded-3xl sm:rounded-[4rem] p-8 sm:p-20 text-center relative overflow-hidden border border-white">
            <div className="absolute inset-0 gradient-primary opacity-[0.03] animate-pulse-subtle" />
            <div className="relative z-10">
-             <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-black text-foreground mb-8">Ready to Exit the Ordinary?</h2>
-             <p className="text-muted-foreground text-lg sm:text-xl mb-12 max-w-2xl mx-auto italic font-serif">
-               "The world is a book and those who do not travel read only one page."
+             <h2 className="text-3xl sm:text-5xl md:text-7xl font-display font-black text-foreground mb-6 sm:mb-8">Ready to Exit the Ordinary?</h2>
+             <p className="text-muted-foreground text-base sm:text-xl mb-10 sm:mb-12 max-w-2xl mx-auto italic font-serif">
+                "The world is a book and those who do not travel read only one page."
              </p>
-             <Link to="/signup" className="btn-saas-primary py-5 sm:py-6 px-10 sm:px-16 rounded-[2rem] sm:rounded-[2.5rem] text-xl sm:text-2xl shadow-2xl">
-                Get Voyager Access — <span className="opacity-60">It's Free</span> <ArrowRight className="h-6 w-6 sm:h-7 sm:w-7" />
+             <Link to="/signup" className="btn-saas-primary py-4 sm:py-6 px-10 sm:px-16 rounded-2xl sm:rounded-[2.5rem] text-lg sm:text-2xl shadow-2xl flex items-center justify-center gap-2 max-w-sm sm:max-w-none mx-auto">
+                Get Voyager Access — <span className="opacity-60 hidden sm:inline">It's Free</span> <ArrowRight className="h-5 w-5 sm:h-7 sm:w-7" />
              </Link>
            </div>
         </div>
