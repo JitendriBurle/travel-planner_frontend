@@ -517,11 +517,10 @@ const ItineraryDetail = () => {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 pb-20">
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8">
-          
-          <div className="lg:col-span-3">
-            <div className="lg:sticky lg:top-8 space-y-6">
+             <div className="lg:col-span-3">
+            <div className="lg:sticky lg:top-24 space-y-6">
               {/* NAVIGATION & BUTTONS */}
-              <div className="glass-card p-1.5 sm:p-4 rounded-2xl sm:rounded-[2rem] border border-white/40 shadow-travel sticky top-2 sm:top-4 lg:relative lg:top-0 z-[40]">
+              <div className="glass-card p-1.5 sm:p-4 rounded-2xl sm:rounded-[2rem] border border-white/40 shadow-travel sticky top-20 lg:relative lg:top-0 z-[40]">
                 <div className="flex lg:flex-col gap-1 sm:gap-2 overflow-x-auto lg:overflow-visible pb-1 sm:pb-2 lg:pb-0 scrollbar-hide no-scrollbar">
                   {[
                     { id: "itinerary", icon: Clock, label: "Daily Plan" },
@@ -535,7 +534,7 @@ const ItineraryDetail = () => {
                       <button
                         key={item.id}
                         onClick={() => setTab(item.id)}
-                        className={`flex flex-col lg:flex-row items-center gap-1 sm:gap-4 px-3 sm:px-6 py-2 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-300 group shrink-0 ${
+                        className={`flex flex-col lg:flex-row items-center gap-1 sm:gap-4 px-3 sm:px-6 py-2.5 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-300 group shrink-0 ${
                           tab === item.id 
                             ? "gradient-primary text-white shadow-lg shadow-primary/20 scale-[1.02]" 
                             : "text-muted-foreground hover:bg-white/80 hover:text-foreground"
@@ -654,8 +653,8 @@ const ItineraryDetail = () => {
                     <button
                       key={i}
                       onClick={() => setSelectedDay(i)}
-                      className={`flex-shrink-0 min-w-[60px] sm:min-w-[100px] px-3 sm:px-6 py-2.5 sm:py-4 rounded-xl sm:rounded-[2rem] transition-all duration-300 ${
-                        setSelectedDay === i || selectedDay === i
+                      className={`flex-shrink-0 min-w-[65px] sm:min-w-[100px] px-3 sm:px-6 py-2.5 sm:py-4 rounded-xl sm:rounded-[2rem] transition-all duration-300 ${
+                        selectedDay === i
                           ? "bg-white shadow-xl text-primary border border-primary/10" 
                           : "text-muted-foreground hover:text-foreground hover:bg-white/30"
                       }`}
@@ -679,7 +678,7 @@ const ItineraryDetail = () => {
                 </div>
 
                 {/* ACTIVITIES LIST */}
-                <div className="relative pl-6 sm:pl-10 border-l-2 border-dashed border-primary/20 space-y-6 sm:space-y-10">
+                <div className="relative ml-2 sm:ml-0 pl-8 sm:pl-10 border-l-2 border-dashed border-primary/20 space-y-6 sm:space-y-10">
                   {dayActivities.length === 0 ? (
                     <div className="bg-white/40 border-2 border-dashed border-border rounded-3xl sm:rounded-[2.5rem] py-16 sm:py-24 text-center px-6">
                       <p className="text-muted-foreground text-sm sm:text-base font-bold italic max-w-xs mx-auto">No activities planned yet.</p>
@@ -689,7 +688,7 @@ const ItineraryDetail = () => {
                       const Icon = activityIcons[a.type] || Camera;
                       return (
                         <div key={a.id} className="relative animate-slide-up" style={{ animationDelay: `${idx * 100}ms` }}>
-                          <div className="absolute -left-[33px] sm:-left-[49px] top-6 h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-primary border-4 border-white shadow-lg z-10" />
+                          <div className="absolute -left-[41px] sm:-left-[49px] top-6 h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-primary border-4 border-white shadow-lg z-10" />
                           <div className="glass-card p-4 sm:p-7 rounded-2xl sm:rounded-[2.5rem] flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6 group hover:shadow-2xl hover:bg-white transition-all duration-500 border border-white/60">
                             <div className="flex gap-4 sm:gap-8 items-center flex-1">
                               <div className="h-10 w-10 sm:h-16 sm:w-16 gradient-primary rounded-xl sm:rounded-3xl flex items-center justify-center text-white shadow-lg shadow-primary/20 rotate-3 group-hover:rotate-0 transition-transform flex-shrink-0">
@@ -751,7 +750,7 @@ const ItineraryDetail = () => {
                   )}
                 </div>
               </div>
-            )}
+            )}      )}
 
             {tab === "expenses" && <TripExpenses tripId={trip.id} trip={trip} />}
             {tab === "packing" && <TripPacking tripId={trip.id} />}
